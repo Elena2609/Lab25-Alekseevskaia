@@ -106,3 +106,32 @@ int SumScores(List<int> scores)
     return sum;
 }
 
+//13. Самостоятельное задание
+int GetScoreAt(List<int> scores, int index)
+{
+    if (index < 0 || index >= scores.Count)
+    {
+        throw new ArgumentOutOfRangeException(nameof(index), "Недопустимый индекс");
+    }
+    return scores[index];
+}
+
+try
+{
+    Console.Write("Введите индекс результата: ");
+    int index = int.Parse(Console.ReadLine() ?? "");
+    int score = GetScoreAt(scores, index);
+    Console.WriteLine($"Результат по индексу {index}: {score}");
+}
+catch (FormatException)
+{
+    Console.WriteLine("Ошибка: введите целое число");
+}
+catch (OverflowException)
+{
+    Console.WriteLine("Ошибка: число вне диапазона int");
+} 
+catch (ArgumentOutOfRangeException)
+{
+    Console.WriteLine("Ошибка: недопустимый индекс");
+}
